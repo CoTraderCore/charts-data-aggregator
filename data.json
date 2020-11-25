@@ -5,6 +5,20 @@
       [
         [
           [
+            [
+              {
+                "amount": "40000000000000000",
+                "unixtime": 1533563807,
+                "eventName": "Deposit"
+              }
+            ],
+            {
+              "amount": "-10000000000000000",
+              "unixtime": 1546785014,
+              "eventName": "Trade"
+            }
+          ],
+          [
             {
               "amount": "40000000000000000",
               "unixtime": 1533563807,
@@ -12,7 +26,7 @@
             }
           ],
           {
-            "amount": "41000000000000000",
+            "amount": "NaN",
             "unixtime": 1559628269,
             "eventName": "Deposit"
           }
@@ -54,8 +68,7 @@
         "eventName": "Trade"
       }
     ],
-    "latestValue": "1707996938679934720000",
-    "amount": "NaN"
+    "latestValue": "1707996938679934720000"
   },
   {
     "address": "0xf0Ee6b27b759C9893Ce4f094b49ad28fd15A23e4",
@@ -66,8 +79,7 @@
         "eventName": "Trade"
       }
     ],
-    "latestValue": "844872758",
-    "amount": "NaN"
+    "latestValue": "844872758"
   },
   {
     "address": "0x05f4a42e251f2d52b8ed15E9FEdAacFcEF1FAD27",
@@ -78,8 +90,7 @@
         "eventName": "Trade"
       }
     ],
-    "latestValue": "147461118108848",
-    "amount": "NaN"
+    "latestValue": "147461118108848"
   },
   {
     "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
@@ -90,8 +101,7 @@
         "eventName": "Trade"
       }
     ],
-    "latestValue": "6442823049795035154",
-    "amount": "NaN"
+    "latestValue": "6442823049795035154"
   },
   {
     "address": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
@@ -102,8 +112,7 @@
         "eventName": "Trade"
       }
     ],
-    "latestValue": "19358739765510062543",
-    "amount": "NaN"
+    "latestValue": "19358739765510062543"
   },
   {
     "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
@@ -114,8 +123,7 @@
         "eventName": "Deposit"
       }
     ],
-    "latestValue": "40000000000000000",
-    "amount": "NaN"
+    "latestValue": "40000000000000000"
   },
   {
     "address": "0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359",
@@ -126,7 +134,6 @@
         "eventName": "Trade"
       }
     ],
-    "latestValue": "10822874999999999996",
-    "amount": "NaN"
+    "latestValue": "10822874999999999996"
   }
 ]
