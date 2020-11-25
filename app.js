@@ -17,6 +17,7 @@ const fund = new web3.eth.Contract(abi.FUND_ABI, FUND_ADDRESS)
 let connectorsAddress
 let connectorsAmount
 let unixTime
+let positionIndex = 0
 
 // events parser
 async function runEvensChecker(address, abi){
@@ -38,7 +39,7 @@ async function runEvensChecker(address, abi){
   switch(EventName){
     case 'SmartFundCreated':
     unixTime = await getTimeByBlock(eventsObj[i].blockNumber, web3)
-    increaseTokenValue(ETH_ADDRESS, 0, unixTime, 'SmartFundCreated')
+    increaseTokenValue(ETH_ADDRESS, 2, unixTime, 'SmartFundCreated')
     break
 
     case 'Deposit':
@@ -184,7 +185,7 @@ async function runEvensChecker(address, abi){
 // Add amount to a certain token address
 function increaseTokenValue(address, amount, unixtime, eventName) {
   const searchObj = localDB.filter((item) => {
-    return item.address === address
+    return item.address === address && item.positionIndex === positionIndex
   })
 
   if(searchObj.length > 0){
@@ -193,12 +194,13 @@ function increaseTokenValue(address, amount, unixtime, eventName) {
     searchObj[0].amount = curAmount.plus(amount).toString(10)
 
     localDB.push(
-      { address, amount:curAmount, unixtime, eventName }
+      { address, amount:curAmount, unixtime, eventName, positionIndex }
     )
   }else{
+    positionIndex++
     // insert if value not exist
     localDB.push(
-      { address, amount, unixtime, eventName }
+      { address, amount, unixtime, eventName, positionIndex }
     )
   }
 }
@@ -207,7 +209,7 @@ function increaseTokenValue(address, amount, unixtime, eventName) {
 // sub amount from a certain token address
 function reduceTokenValue(address, amount, unixtime, eventName) {
   const searchObj = localDB.filter((item) => {
-    return item.address === address
+    return item.address === address && item.positionIndex === positionIndex
   })
 
   if(searchObj.length > 0){
@@ -215,8 +217,10 @@ function reduceTokenValue(address, amount, unixtime, eventName) {
     let curAmount = new BigNumber(searchObj[0].amount)
     searchObj[0].amount = curAmount.minus(amount).toString(10)
 
+    positionIndex++
+
     localDB.push(
-      { address, amount:curAmount, unixtime, eventName }
+      { address, amount:curAmount, unixtime, eventName, positionIndex }
     )
   }
 }
