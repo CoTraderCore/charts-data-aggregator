@@ -16,6 +16,7 @@ const fund = new web3.eth.Contract(abi.FUND_ABI, FUND_ADDRESS)
 
 let connectorsAddress
 let connectorsAmount
+let unixTime
 
 // events parser
 async function runEvensChecker(address, abi){
@@ -35,17 +36,23 @@ async function runEvensChecker(address, abi){
   const EventName = eventsObj[i].event
 
   switch(EventName){
+    case 'SmartFundCreated':
+    unixTime = await getTimeByBlock(eventsObj[i].blockNumber, web3)
+    increaseTokenValue(ETH_ADDRESS, 0, unixTime, 'SmartFundCreated')
+    break
+
     case 'Deposit':
     console.log(
       `Deposit event,
        amount ${eventsObj[i].returnValues[1]}`
     )
 
-    // test parse time from event 
-    const time = await getTimeByBlock(eventsObj[i].blockNumber, web3)
-    console.log("timestamp", time, 'blockNumber', eventsObj[i].blockNumber)
-
-    insertOrIncreaseTokenValue(fundAsset, eventsObj[i].returnValues[1])
+    unixTime = await getTimeByBlock(eventsObj[i].blockNumber, web3)
+    increaseTokenValue(
+      fundAsset,
+      eventsObj[i].returnValues[1],
+      unixTime,
+      'Deposit')
     break
 
     case 'Withdraw':
@@ -67,8 +74,9 @@ async function runEvensChecker(address, abi){
        amountRecieve ${eventsObj[i].returnValues[3]}
        `
     )
-    insertOrIncreaseTokenValue(eventsObj[i].returnValues[2], eventsObj[i].returnValues[3])
-    reduceTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1])
+    unixTime = await getTimeByBlock(eventsObj[i].blockNumber, web3)
+    increaseTokenValue(eventsObj[i].returnValues[2], eventsObj[i].returnValues[3], unixTime, 'Trade')
+    reduceTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1], unixTime, 'Trade')
     break
 
     case 'BuyPool':
@@ -79,14 +87,15 @@ async function runEvensChecker(address, abi){
        connectorsAddress ${eventsObj[i].returnValues[2]},
        connectorsAmount${eventsObj[i].returnValues[3]}
        `)
+    unixTime = await getTimeByBlock(eventsObj[i].blockNumber, web3)
 
     // increase pool
-    insertOrIncreaseTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1])
+    increaseTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1], unixTime, 'BuyPool')
     // reduce connectors
     connectorsAddress = eventsObj[i].returnValues[2] // JSON PARSE ???
     connectorsAmount = eventsObj[i].returnValues[3] // JSON PARSE ???
     for(let i = 0; i < connectorsAddress.length; i++){
-      reduceTokenValue(connectorsAddress[i], connectorsAmount[i])
+      reduceTokenValue(connectorsAddress[i], connectorsAmount[i], unixTime, 'BuyPool')
     }
     break
 
@@ -103,7 +112,7 @@ async function runEvensChecker(address, abi){
     connectorsAddress = eventsObj[i].returnValues[2] // JSON PARSE ???
     connectorsAmount = eventsObj[i].returnValues[3] // JSON PARSE ???
     for(let i = 0; i < connectorsAddress.length; i++){
-      insertOrIncreaseTokenValue(connectorsAddress[i], connectorsAmount[i])
+      increaseTokenValue(connectorsAddress[i], connectorsAmount[i])
     }
     // reduce pool
     reduceTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1])
@@ -118,7 +127,7 @@ async function runEvensChecker(address, abi){
        token amount ${eventsObj[i].returnValues[3]}`
     )
 
-    insertOrIncreaseTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1])
+    increaseTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1])
     reduceTokenValue(eventsObj[i].returnValues[2], eventsObj[i].returnValues[3])
     break
 
@@ -132,7 +141,7 @@ async function runEvensChecker(address, abi){
     )
 
     reduceTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1])
-    insertOrIncreaseTokenValue(eventsObj[i].returnValues[2], eventsObj[i].returnValues[3])
+    increaseTokenValue(eventsObj[i].returnValues[2], eventsObj[i].returnValues[3])
     break
 
 
@@ -148,7 +157,7 @@ async function runEvensChecker(address, abi){
        )
 
        reduceTokenValue(eventsObj[i].returnValues[1][0], eventsObj[i].returnValues[2][0])
-       insertOrIncreaseTokenValue(eventsObj[i].returnValues[3][0], eventsObj[i].returnValues[4][0])
+       increaseTokenValue(eventsObj[i].returnValues[3][0], eventsObj[i].returnValues[4][0])
      }
      else if(eventsObj[i].returnValues[0] === "YEARN_WITHDRAW"){
        console.log(
@@ -161,7 +170,7 @@ async function runEvensChecker(address, abi){
        )
 
        reduceTokenValue(eventsObj[i].returnValues[1][0], eventsObj[i].returnValues[2][0])
-       insertOrIncreaseTokenValue(eventsObj[i].returnValues[3][0], eventsObj[i].returnValues[4][0])
+       increaseTokenValue(eventsObj[i].returnValues[3][0], eventsObj[i].returnValues[4][0])
      }
      else{
        console.error("UNKNOWN DEFI EVENT")
@@ -173,7 +182,7 @@ async function runEvensChecker(address, abi){
 }
 
 // Add amount to a certain token address
-function insertOrIncreaseTokenValue(address, amount) {
+function increaseTokenValue(address, amount, unixtime, eventName) {
   const searchObj = localDB.filter((item) => {
     return item.address === address
   })
@@ -182,17 +191,21 @@ function insertOrIncreaseTokenValue(address, amount) {
     // update amount
     let curAmount = new BigNumber(searchObj[0].amount)
     searchObj[0].amount = curAmount.plus(amount).toString(10)
-  }else{
-    // insert
+
     localDB.push(
-      { address, amount }
+      { address, amount:curAmount, unixtime, eventName }
+    )
+  }else{
+    // insert if value not exist
+    localDB.push(
+      { address, amount, unixtime, eventName }
     )
   }
 }
 
 
 // sub amount from a certain token address
-function reduceTokenValue(address, amount) {
+function reduceTokenValue(address, amount, unixtime, eventName) {
   const searchObj = localDB.filter((item) => {
     return item.address === address
   })
@@ -201,6 +214,10 @@ function reduceTokenValue(address, amount) {
     // update amount
     let curAmount = new BigNumber(searchObj[0].amount)
     searchObj[0].amount = curAmount.minus(amount).toString(10)
+
+    localDB.push(
+      { address, amount:curAmount, unixtime, eventName }
+    )
   }
 }
 
