@@ -1,5 +1,10 @@
 # charts-data-aggregator
 
+# status
+
+```
+Not finished
+```
 
 # tasks
 ```
