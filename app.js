@@ -39,7 +39,7 @@ async function runEvensChecker(address, abi){
   switch(EventName){
     case 'SmartFundCreated':
     unixTime = await getTimeByBlock(eventsObj[i].blockNumber, web3)
-    increaseTokenValue(ETH_ADDRESS, 2, unixTime, 'SmartFundCreated')
+    increaseTokenValue(ETH_ADDRESS, 0, unixTime, 'SmartFundCreated')
     break
 
     case 'Deposit':
@@ -185,12 +185,14 @@ async function runEvensChecker(address, abi){
 
 // Add amount to a certain token address
 function increaseTokenValue(address, amount, unixtime, eventName) {
-  const addressStruct = localDB.filter(item => item.address === address)
-  // update if exist
+  // get address struct from local DB
+  const addressStruct = localDB.filter(item => String(item.address).toLowerCase() === String(address).toLowerCase())
+
+  // update data if such address exist in DB
   if(addressStruct.length > 0){
-    const index = addressStruct.findIndex(item => item.address === address)
+    const index = addressStruct.findIndex(item => String(item.address).toLowerCase() === String(address).toLowerCase())
     const prevData = addressStruct.map(item => item.data)
-    const curAmount = new BigNumber(addressStruct.map(item => item.curAmount))
+    const curAmount = new BigNumber(addressStruct.map(item => item.latestValue))
     const latestValue = curAmount.plus(amount).toString(10)
 
     localDB[index] = {
@@ -203,8 +205,9 @@ function increaseTokenValue(address, amount, unixtime, eventName) {
       ],
       latestValue
     }
-  }else{
-    // insert if not exist
+  }
+  // insert if not exist
+  else{
     localDB.push(
       {
         address,
@@ -215,47 +218,24 @@ function increaseTokenValue(address, amount, unixtime, eventName) {
   }
 }
 
-// // Add amount to a certain token address
-// function increaseTokenValue(address, amount, unixtime, eventName) {
-//   const searchObj = localDB.filter((item) => {
-//     return item.address === address && item.positionIndex === positionIndex
-//   })
-//
-//   if(searchObj.length > 0){
-//     // update amount
-//     let curAmount = new BigNumber(searchObj[0].amount)
-//     searchObj[0].amount = curAmount.plus(amount).toString(10)
-//
-//     localDB.push(
-//       { address, amount:curAmount, unixtime, eventName, positionIndex }
-//     )
-//   }else{
-//     positionIndex++
-//     // insert if value not exist
-//     localDB.push(
-//       { address, amount, unixtime, eventName, positionIndex }
-//     )
-//   }
-// }
-
 
 // sub amount from a certain token address
 function reduceTokenValue(address, amount, unixtime, eventName) {
-  const searchObj = localDB.filter((item) => {
-    return item.address === address && item.positionIndex === positionIndex
-  })
-
-  if(searchObj.length > 0){
-    // update amount
-    let curAmount = new BigNumber(searchObj[0].amount)
-    searchObj[0].amount = curAmount.minus(amount).toString(10)
-
-    positionIndex++
-
-    localDB.push(
-      { address, amount:curAmount, unixtime, eventName, positionIndex }
-    )
-  }
+  // const searchObj = localDB.filter((item) => {
+  //   return item.address === address && item.positionIndex === positionIndex
+  // })
+  //
+  // if(searchObj.length > 0){
+  //   // update amount
+  //   let curAmount = new BigNumber(searchObj[0].amount)
+  //   searchObj[0].amount = curAmount.minus(amount).toString(10)
+  //
+  //   positionIndex++
+  //
+  //   localDB.push(
+  //     { address, amount:curAmount, unixtime, eventName, positionIndex }
+  //   )
+  // }
 }
 
 
