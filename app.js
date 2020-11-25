@@ -4,6 +4,7 @@ const web3 = new Web3(process.env.INFURA)
 
 const abi = require('./abi.js')
 const getEvent = require('./getEvent.js')
+const getTimeByBlock = require('./getTimeByBlock.js')
 const _ = require('lodash')
 const BigNumber = require('bignumber.js')
 const fs = require('fs')
@@ -39,6 +40,11 @@ async function runEvensChecker(address, abi){
       `Deposit event,
        amount ${eventsObj[i].returnValues[1]}`
     )
+
+    // test parse time from event 
+    const time = await getTimeByBlock(eventsObj[i].blockNumber, web3)
+    console.log("timestamp", time, 'blockNumber', eventsObj[i].blockNumber)
+
     insertOrIncreaseTokenValue(fundAsset, eventsObj[i].returnValues[1])
     break
 
