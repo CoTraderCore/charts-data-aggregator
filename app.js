@@ -182,28 +182,61 @@ async function runEvensChecker(address, abi){
   }
 }
 
+
 // Add amount to a certain token address
 function increaseTokenValue(address, amount, unixtime, eventName) {
-  const searchObj = localDB.filter((item) => {
-    return item.address === address && item.positionIndex === positionIndex
-  })
+  const addressStruct = localDB.filter(item => item.address === address)
+  // update if exist
+  if(addressStruct.length > 0){
+    const index = addressStruct.findIndex(item => item.address === address)
+    const prevData = addressStruct.map(item => item.data)
+    const curAmount = new BigNumber(addressStruct.map(item => item.curAmount))
+    const latestValue = curAmount.plus(amount).toString(10)
 
-  if(searchObj.length > 0){
-    // update amount
-    let curAmount = new BigNumber(searchObj[0].amount)
-    searchObj[0].amount = curAmount.plus(amount).toString(10)
-
-    localDB.push(
-      { address, amount:curAmount, unixtime, eventName, positionIndex }
-    )
+    localDB[index] = {
+      address,
+      data:[
+        ...prevData,
+        {
+          amount:latestValue, unixtime, eventName
+        }
+      ],
+      latestValue
+    }
   }else{
-    positionIndex++
-    // insert if value not exist
+    // insert if not exist
     localDB.push(
-      { address, amount, unixtime, eventName, positionIndex }
+      {
+        address,
+        data:[{amount, unixtime, eventName}],
+        latestValue:amount
+      }
     )
   }
 }
+
+// // Add amount to a certain token address
+// function increaseTokenValue(address, amount, unixtime, eventName) {
+//   const searchObj = localDB.filter((item) => {
+//     return item.address === address && item.positionIndex === positionIndex
+//   })
+//
+//   if(searchObj.length > 0){
+//     // update amount
+//     let curAmount = new BigNumber(searchObj[0].amount)
+//     searchObj[0].amount = curAmount.plus(amount).toString(10)
+//
+//     localDB.push(
+//       { address, amount:curAmount, unixtime, eventName, positionIndex }
+//     )
+//   }else{
+//     positionIndex++
+//     // insert if value not exist
+//     localDB.push(
+//       { address, amount, unixtime, eventName, positionIndex }
+//     )
+//   }
+// }
 
 
 // sub amount from a certain token address

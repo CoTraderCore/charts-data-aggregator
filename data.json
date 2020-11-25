@@ -1,128 +1,132 @@
 [
   {
     "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-    "amount": "99047351343235105.10576645135233008043",
-    "unixtime": 1532858081,
-    "eventName": "SmartFundCreated",
-    "positionIndex": 1
-  },
-  {
-    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-    "amount": "1.9809470268647020625",
-    "unixtime": 1532859811,
-    "eventName": "Deposit",
-    "positionIndex": 1
+    "data": [
+      [
+        [
+          [
+            {
+              "amount": "40000000000000000",
+              "unixtime": 1533563807,
+              "eventName": "Deposit"
+            }
+          ],
+          {
+            "amount": "NaN",
+            "unixtime": 1559628269,
+            "eventName": "Deposit"
+          }
+        ],
+        [
+          {
+            "amount": "40000000000000000",
+            "unixtime": 1533563807,
+            "eventName": "Deposit"
+          }
+        ],
+        {
+          "amount": "NaN",
+          "unixtime": 1559643662,
+          "eventName": "Deposit"
+        }
+      ],
+      [
+        {
+          "amount": "40000000000000000",
+          "unixtime": 1533563807,
+          "eventName": "Deposit"
+        }
+      ],
+      {
+        "amount": "NaN",
+        "unixtime": 1577620427,
+        "eventName": "Deposit"
+      }
+    ],
+    "latestValue": "NaN"
   },
   {
     "address": "0xFA1a856Cfa3409CFa145Fa4e20Eb270dF3EB21ab",
-    "amount": "1691725728786014762536.09992565136093954455",
-    "unixtime": 1532898999,
-    "eventName": "Trade",
-    "positionIndex": 2
+    "data": [
+      {
+        "amount": "1707996938679934720000",
+        "unixtime": 1532898999,
+        "eventName": "Trade"
+      }
+    ],
+    "latestValue": "1707996938679934720000",
+    "amount": "NaN"
   },
   {
     "address": "0xf0Ee6b27b759C9893Ce4f094b49ad28fd15A23e4",
-    "amount": "836824089.01954046219480605419",
-    "unixtime": 1533234009,
-    "eventName": "Trade",
-    "positionIndex": 3
+    "data": [
+      {
+        "amount": "844872758",
+        "unixtime": 1533234009,
+        "eventName": "Trade"
+      }
+    ],
+    "latestValue": "844872758",
+    "amount": "NaN"
   },
   {
     "address": "0x05f4a42e251f2d52b8ed15E9FEdAacFcEF1FAD27",
-    "amount": "146056331747933.5614263962038799255",
-    "unixtime": 1533239095,
-    "eventName": "Trade",
-    "positionIndex": 4
+    "data": [
+      {
+        "amount": "147461118108848",
+        "unixtime": 1533239095,
+        "eventName": "Trade"
+      }
+    ],
+    "latestValue": "147461118108848",
+    "amount": "NaN"
   },
   {
     "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
-    "amount": "6381445582553423588.66939539122851501655",
-    "unixtime": 1533242784,
-    "eventName": "Trade",
-    "positionIndex": 5
+    "data": [
+      {
+        "amount": "6442823049795035154",
+        "unixtime": 1533242784,
+        "eventName": "Trade"
+      }
+    ],
+    "latestValue": "6442823049795035154",
+    "amount": "NaN"
   },
   {
     "address": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
-    "amount": "19174318991167318985.09862513819771903384",
-    "unixtime": 1533242784,
-    "eventName": "Trade",
-    "positionIndex": 6
-  },
-  {
-    "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
-    "amount": "20436542848788448112.23330908301259678638",
-    "unixtime": 1533242784,
-    "eventName": "Trade",
-    "positionIndex": 7
-  },
-  {
-    "address": "0x05f4a42e251f2d52b8ed15E9FEdAacFcEF1FAD27",
-    "amount": "86574646221182.37660684947300034684",
-    "unixtime": 1533242784,
-    "eventName": "Trade",
-    "positionIndex": 8
+    "data": [
+      {
+        "amount": "19358739765510062543",
+        "unixtime": 1533242784,
+        "eventName": "Trade"
+      }
+    ],
+    "latestValue": "19358739765510062543",
+    "amount": "NaN"
   },
   {
     "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-    "amount": "164594863724099073.21059347902123029632",
-    "unixtime": 1533563807,
-    "eventName": "Deposit",
-    "positionIndex": 9
-  },
-  {
-    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-    "amount": "39618940537294041.24992776979505120717",
-    "unixtime": 1535085604,
-    "eventName": "Deposit",
-    "positionIndex": 9
-  },
-  {
-    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-    "amount": "64380778373102817.03113262591695821166",
-    "unixtime": 1537052388,
-    "eventName": "Deposit",
-    "positionIndex": 9
-  },
-  {
-    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-    "amount": "163428129716337920.1559520504045862296",
-    "unixtime": 1538922267,
-    "eventName": "Trade",
-    "positionIndex": 9
+    "data": [
+      {
+        "amount": "40000000000000000",
+        "unixtime": 1533563807,
+        "eventName": "Deposit"
+      }
+    ],
+    "latestValue": "40000000000000000",
+    "amount": "NaN"
   },
   {
     "address": "0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359",
-    "amount": "18319940485012320570.46544862742497503742",
-    "unixtime": 1543362594,
-    "eventName": "Trade",
-    "positionIndex": 10
-  },
-  {
-    "address": "0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359",
-    "amount": "10719771026689156163.35840623428596672102",
-    "unixtime": 1546785014,
-    "eventName": "Trade",
-    "positionIndex": 10
-  },
-  {
-    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-    "amount": "51985718066145681.64109732491684345645",
-    "unixtime": 1559628269,
-    "eventName": "Deposit",
-    "positionIndex": 11
-  },
-  {
-    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-    "amount": "990473513432351.03124819424487628017",
-    "unixtime": 1559643662,
-    "eventName": "Deposit",
-    "positionIndex": 11
-  },
-  {
-    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-    "amount": "1985718066145681.64109732491684345645",
-    "unixtime": 1577620427,
-    "eventName": "Deposit",
-    "positionIndex": 11
+    "data": [
+      {
+        "amount": "10822874999999999996",
+        "unixtime": 1543362594,
+        "eventName": "Trade"
+      }
+    ],
+    "latestValue": "10822874999999999996",
+    "amount": "NaN"
   }
 ]
