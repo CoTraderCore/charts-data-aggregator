@@ -192,16 +192,15 @@ function increaseTokenValue(address, amount, unixtime, eventName) {
 
   // update data if such address exist in DB
   if(addressStruct.length > 0){
-    const index = addressStruct.findIndex(item => String(item.address).toLowerCase() === String(address).toLowerCase())
+    const index = localDB.map(item => String(item.address).toLowerCase()).indexOf(String(address).toLowerCase())
     const prevData = addressStruct.map(item => item.data)
     const curAmount = new BigNumber(addressStruct.map(item => item.latestValue))
     const latestValue = curAmount.plus(amount).toString(10)
 
-    console.log(...prevData)
 
     localDB[index] = {
       address,
-      data:[...prevData, {
+      data:[...prevData[0], {
         amount:latestValue, unixtime, eventName
       }],
       latestValue
@@ -224,14 +223,14 @@ function increaseTokenValue(address, amount, unixtime, eventName) {
 function reduceTokenValue(address, amount, unixtime, eventName) {
   // get address struct from local DB
   const addressStruct = localDB.filter(item => String(item.address).toLowerCase() === String(address).toLowerCase())
-  const index = addressStruct.findIndex(item => String(item.address).toLowerCase() === String(address).toLowerCase())
+  const index = localDB.findIndex(item => String(item.address).toLowerCase() === String(address).toLowerCase())
   const prevData = addressStruct.map(item => item.data)
   const curAmount = new BigNumber(addressStruct.map(item => item.latestValue))
   const latestValue = curAmount.minus(amount).toString(10)
 
   localDB[index] = {
     address,
-    data:[...prevData, {
+    data:[...prevData[0], {
       amount:latestValue, unixtime, eventName
     }],
     latestValue

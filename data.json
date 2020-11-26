@@ -2,62 +2,68 @@
   {
     "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
     "data": [
-      [
-        [
-          [
-            [
-              {
-                "amount": "40000000000000000",
-                "unixtime": 1533563807,
-                "eventName": "Deposit"
-              }
-            ],
-            {
-              "amount": "-10000000000000000",
-              "unixtime": 1546785014,
-              "eventName": "Trade"
-            }
-          ],
-          [
-            {
-              "amount": "40000000000000000",
-              "unixtime": 1533563807,
-              "eventName": "Deposit"
-            }
-          ],
-          {
-            "amount": "NaN",
-            "unixtime": 1559628269,
-            "eventName": "Deposit"
-          }
-        ],
-        [
-          {
-            "amount": "40000000000000000",
-            "unixtime": 1533563807,
-            "eventName": "Deposit"
-          }
-        ],
-        {
-          "amount": "NaN",
-          "unixtime": 1559643662,
-          "eventName": "Deposit"
-        }
-      ],
-      [
-        {
-          "amount": "40000000000000000",
-          "unixtime": 1533563807,
-          "eventName": "Deposit"
-        }
-      ],
       {
-        "amount": "NaN",
+        "amount": 0,
+        "unixtime": 1532858081,
+        "eventName": "SmartFundCreated"
+      },
+      {
+        "amount": "100000000000000000",
+        "unixtime": 1532859811,
+        "eventName": "Deposit"
+      },
+      {
+        "amount": "0",
+        "unixtime": 1532898999,
+        "eventName": "Trade"
+      },
+      {
+        "amount": "40000000000000000",
+        "unixtime": 1533563807,
+        "eventName": "Deposit"
+      },
+      {
+        "amount": "65000000000000000",
+        "unixtime": 1535085604,
+        "eventName": "Deposit"
+      },
+      {
+        "amount": "165000000000000000",
+        "unixtime": 1537052388,
+        "eventName": "Deposit"
+      },
+      {
+        "amount": "166177955787750442",
+        "unixtime": 1538922267,
+        "eventName": "Trade"
+      },
+      {
+        "amount": "66177955787750442",
+        "unixtime": 1543362594,
+        "eventName": "Trade"
+      },
+      {
+        "amount": "16177955787750442",
+        "unixtime": 1546785014,
+        "eventName": "Trade"
+      },
+      {
+        "amount": "17177955787750442",
+        "unixtime": 1559628269,
+        "eventName": "Deposit"
+      },
+      {
+        "amount": "18177955787750442",
+        "unixtime": 1559643662,
+        "eventName": "Deposit"
+      },
+      {
+        "amount": "68177955787750442",
         "unixtime": 1577620427,
         "eventName": "Deposit"
       }
     ],
-    "latestValue": "NaN"
+    "latestValue": "68177955787750442"
   },
   {
     "address": "0xFA1a856Cfa3409CFa145Fa4e20Eb270dF3EB21ab",
@@ -66,9 +72,44 @@
         "amount": "1707996938679934720000",
         "unixtime": 1532898999,
         "eventName": "Trade"
+      },
+      {
+        "amount": "1280997704009951020000",
+        "unixtime": 1533234009,
+        "eventName": "Trade"
+      },
+      {
+        "amount": "853998469339967320000",
+        "unixtime": 1533239095,
+        "eventName": "Trade"
+      },
+      {
+        "amount": "753998469339967320000",
+        "unixtime": 1533242784,
+        "eventName": "Trade"
+      },
+      {
+        "amount": "653998469339967320000",
+        "unixtime": 1533242784,
+        "eventName": "Trade"
+      },
+      {
+        "amount": "333749043337479580000",
+        "unixtime": 1533242784,
+        "eventName": "Trade"
+      },
+      {
+        "amount": "83749043337479580000",
+        "unixtime": 1533242784,
+        "eventName": "Trade"
+      },
+      {
+        "amount": "62811782503109684000",
+        "unixtime": 1538922267,
+        "eventName": "Trade"
       }
     ],
-    "latestValue": "1707996938679934720000"
+    "latestValue": "62811782503109684000"
   },
   {
     "address": "0xf0Ee6b27b759C9893Ce4f094b49ad28fd15A23e4",
@@ -88,9 +129,14 @@
         "amount": "147461118108848",
         "unixtime": 1533239095,
         "eventName": "Trade"
+      },
+      {
+        "amount": "234868449094580",
+        "unixtime": 1533242784,
+        "eventName": "Trade"
       }
     ],
-    "latestValue": "147461118108848"
+    "latestValue": "234868449094580"
   },
   {
     "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
@@ -99,9 +145,14 @@
         "amount": "6442823049795035154",
         "unixtime": 1533242784,
         "eventName": "Trade"
+      },
+      {
+        "amount": "27075926885119609241",
+        "unixtime": 1533242784,
+        "eventName": "Trade"
       }
     ],
-    "latestValue": "6442823049795035154"
+    "latestValue": "27075926885119609241"
   },
   {
     "address": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
@@ -115,25 +166,19 @@
     "latestValue": "19358739765510062543"
   },
   {
-    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-    "data": [
-      {
-        "amount": "40000000000000000",
-        "unixtime": 1533563807,
-        "eventName": "Deposit"
-      }
-    ],
-    "latestValue": "40000000000000000"
-  },
-  {
     "address": "0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359",
     "data": [
       {
         "amount": "10822874999999999996",
         "unixtime": 1543362594,
         "eventName": "Trade"
+      },
+      {
+        "amount": "18496143749999999996",
+        "unixtime": 1546785014,
+        "eventName": "Trade"
       }
     ],
-    "latestValue": "10822874999999999996"
+    "latestValue": "18496143749999999996"
   }
 ]
