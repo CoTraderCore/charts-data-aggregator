@@ -1,7 +1,7 @@
 require('dotenv').config()
 const Web3 = require('web3')
 const web3 = new Web3(process.env.INFURA)
-
+const getFundCoreAssetAddress = require('./helpers/getFundCoreAssetAddress')
 const abi = require('./abi.js')
 const getEvent = require('./getEvent.js')
 const getTimeByBlock = require('./getTimeByBlock.js')
@@ -9,7 +9,7 @@ const _ = require('lodash')
 const BigNumber = require('bignumber.js')
 const fs = require('fs')
 const ETH_ADDRESS = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'
-const FUND_ADDRESS = "0xe2fc78D330a0fEd887a6a71c2B5Dc7934135A285"
+const FUND_ADDRESS = "0x2A77428658C088bfAE37d9cA30617B3c39fc8c26"
 const localDB = []
 
 const fund = new web3.eth.Contract(abi.FUND_ABI, FUND_ADDRESS)
@@ -21,12 +21,7 @@ let positionIndex = 0
 
 // events parser
 async function runEvensChecker(address, abi){
-  let fundAsset
-  try{
-    fundAsset = await fund.methods.stableCoinAddress().call()
-  }catch(e){
-    fundAsset = ETH_ADDRESS
-  }
+  const fundAsset = await getFundCoreAssetAddress(address, web3)
 
   let eventsObj = await getEvent(address, abi, 0, 'allEvents', web3)
 
@@ -39,7 +34,7 @@ async function runEvensChecker(address, abi){
   switch(EventName){
     case 'SmartFundCreated':
     unixTime = await getTimeByBlock(eventsObj[i].blockNumber, web3)
-    increaseTokenValue(ETH_ADDRESS, 0, unixTime, 'SmartFundCreated', eventsObj[i].transactionHash)
+    increaseTokenValue(fundAsset, 0, unixTime, 'SmartFundCreated', eventsObj[i].transactionHash)
     break
 
     case 'Deposit':

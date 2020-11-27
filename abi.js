@@ -1356,3 +1356,19 @@ exports.FUND_ABI = [
 		"type": "function"
 	}
 ]
+
+exports.SmartFundUSDABI_V_4_5 = [
+	{
+		"inputs": [],
+		"name": "stableCoinAddress",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
