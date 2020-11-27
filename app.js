@@ -39,7 +39,7 @@ async function runEvensChecker(address, abi){
   switch(EventName){
     case 'SmartFundCreated':
     unixTime = await getTimeByBlock(eventsObj[i].blockNumber, web3)
-    increaseTokenValue(ETH_ADDRESS, 0, unixTime, 'SmartFundCreated')
+    increaseTokenValue(ETH_ADDRESS, 0, unixTime, 'SmartFundCreated', eventsObj[i].transactionHash)
     break
 
     case 'Deposit':
@@ -53,7 +53,8 @@ async function runEvensChecker(address, abi){
       fundAsset,
       eventsObj[i].returnValues[1],
       unixTime,
-      'Deposit')
+      'Deposit',
+      eventsObj[i].transactionHash)
     break
 
     case 'Withdraw':
@@ -64,7 +65,7 @@ async function runEvensChecker(address, abi){
     // )
 
     unixTime = await getTimeByBlock(eventsObj[i].blockNumber, web3)
-    subWithdraw(eventsObj[i].returnValues[1], eventsObj[i].returnValues[2], unixTime)
+    subWithdraw(eventsObj[i].returnValues[1], eventsObj[i].returnValues[2], unixTime, eventsObj[i].transactionHash)
     break
 
     case 'Trade':
@@ -78,8 +79,8 @@ async function runEvensChecker(address, abi){
     // )
 
     unixTime = await getTimeByBlock(eventsObj[i].blockNumber, web3)
-    increaseTokenValue(eventsObj[i].returnValues[2], eventsObj[i].returnValues[3], unixTime, 'Trade')
-    reduceTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1], unixTime, 'Trade')
+    increaseTokenValue(eventsObj[i].returnValues[2], eventsObj[i].returnValues[3], unixTime, 'Trade', eventsObj[i].transactionHash)
+    reduceTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1], unixTime, 'Trade', eventsObj[i].transactionHash)
     break
 
     case 'BuyPool':
@@ -94,12 +95,12 @@ async function runEvensChecker(address, abi){
     unixTime = await getTimeByBlock(eventsObj[i].blockNumber, web3)
 
     // increase pool
-    increaseTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1], unixTime, 'BuyPool')
+    increaseTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1], unixTime, 'BuyPool', eventsObj[i].transactionHash)
     // reduce connectors
     connectorsAddress = eventsObj[i].returnValues[2] // JSON PARSE ???
     connectorsAmount = eventsObj[i].returnValues[3] // JSON PARSE ???
     for(let i = 0; i < connectorsAddress.length; i++){
-      reduceTokenValue(connectorsAddress[i], connectorsAmount[i], unixTime, 'BuyPool')
+      reduceTokenValue(connectorsAddress[i], connectorsAmount[i], unixTime, 'BuyPool', eventsObj[i].transactionHash)
     }
     break
 
@@ -112,14 +113,16 @@ async function runEvensChecker(address, abi){
     //    connectorsAmount${eventsObj[i].returnValues[3]}
     //    `)
 
+    unixTime = await getTimeByBlock(eventsObj[i].blockNumber, web3)
+
     // increase connectors
     connectorsAddress = eventsObj[i].returnValues[2] // JSON PARSE ???
     connectorsAmount = eventsObj[i].returnValues[3] // JSON PARSE ???
     for(let i = 0; i < connectorsAddress.length; i++){
-      increaseTokenValue(connectorsAddress[i], connectorsAmount[i])
+      increaseTokenValue(connectorsAddress[i], connectorsAmount[i], unixTime, 'SellPool', eventsObj[i].transactionHash)
     }
     // reduce pool
-    reduceTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1])
+    reduceTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1], unixTime, 'SellPool', eventsObj[i].transactionHash)
     break
 
     case 'Loan':
@@ -131,8 +134,10 @@ async function runEvensChecker(address, abi){
     //    token amount ${eventsObj[i].returnValues[3]}`
     // )
 
-    increaseTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1])
-    reduceTokenValue(eventsObj[i].returnValues[2], eventsObj[i].returnValues[3])
+    unixTime = await getTimeByBlock(eventsObj[i].blockNumber, web3)
+
+    increaseTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1], unixTime, 'Loan', ventsObj[i].transactionHash)
+    reduceTokenValue(eventsObj[i].returnValues[2], eventsObj[i].returnValues[3], unixTime, 'Loan', ventsObj[i].transactionHash)
     break
 
     case 'Redeem':
@@ -144,8 +149,10 @@ async function runEvensChecker(address, abi){
     //    token amount ${eventsObj[i].returnValues[3]}`
     // )
 
-    reduceTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1])
-    increaseTokenValue(eventsObj[i].returnValues[2], eventsObj[i].returnValues[3])
+    unixTime = await getTimeByBlock(eventsObj[i].blockNumber, web3)
+
+    reduceTokenValue(eventsObj[i].returnValues[0], eventsObj[i].returnValues[1], unixTime, 'Redeem', eventsObj[i].transactionHash)
+    increaseTokenValue(eventsObj[i].returnValues[2], eventsObj[i].returnValues[3], unixTime, 'Redeem', ventsObj[i].transactionHash)
     break
 
 
@@ -160,8 +167,10 @@ async function runEvensChecker(address, abi){
        //   `
        // )
 
-       reduceTokenValue(eventsObj[i].returnValues[1][0], eventsObj[i].returnValues[2][0])
-       increaseTokenValue(eventsObj[i].returnValues[3][0], eventsObj[i].returnValues[4][0])
+       unixTime = await getTimeByBlock(eventsObj[i].blockNumber, web3)
+
+       reduceTokenValue(eventsObj[i].returnValues[1][0], eventsObj[i].returnValues[2][0], unixTime, 'YEARN_DEPOSIT', eventsObj[i].transactionHash)
+       increaseTokenValue(eventsObj[i].returnValues[3][0], eventsObj[i].returnValues[4][0], unixTime, 'YEARN_DEPOSIT', ventsObj[i].transactionHash)
      }
      else if(eventsObj[i].returnValues[0] === "YEARN_WITHDRAW"){
        // console.log(
@@ -173,8 +182,10 @@ async function runEvensChecker(address, abi){
        //   `
        // )
 
-       reduceTokenValue(eventsObj[i].returnValues[1][0], eventsObj[i].returnValues[2][0])
-       increaseTokenValue(eventsObj[i].returnValues[3][0], eventsObj[i].returnValues[4][0])
+       unixTime = await getTimeByBlock(eventsObj[i].blockNumber, web3)
+
+       reduceTokenValue(eventsObj[i].returnValues[1][0], eventsObj[i].returnValues[2][0], unixTime, 'YEARN_WITHDRAW', eventsObj[i].transactionHash)
+       increaseTokenValue(eventsObj[i].returnValues[3][0], eventsObj[i].returnValues[4][0], unixTime, 'YEARN_WITHDRAW', eventsObj[i].transactionHash)
      }
      else{
        console.error("UNKNOWN DEFI EVENT")
@@ -187,7 +198,7 @@ async function runEvensChecker(address, abi){
 
 
 // Add amount to a certain token address
-function increaseTokenValue(address, amount, unixtime, eventName) {
+function increaseTokenValue(address, amount, unixtime, eventName, transactionHash) {
   // get address struct from local DB
   const addressStruct = localDB.filter(item => String(item.address).toLowerCase() === String(address).toLowerCase())
 
@@ -202,7 +213,7 @@ function increaseTokenValue(address, amount, unixtime, eventName) {
     localDB[index] = {
       address,
       data:[...prevData[0], {
-        amount:latestValue, unixtime, eventName
+        amount:latestValue, unixtime, eventName, action: "Increase", transactionHash
       }],
       latestValue
     }
@@ -212,7 +223,7 @@ function increaseTokenValue(address, amount, unixtime, eventName) {
     localDB.push(
       {
         address,
-        data:[{amount, unixtime, eventName}],
+        data:[{amount, unixtime, eventName, action: 'Init', transactionHash}],
         latestValue:amount
       }
     )
@@ -221,7 +232,7 @@ function increaseTokenValue(address, amount, unixtime, eventName) {
 
 
 // sub amount from a certain token address
-function reduceTokenValue(address, amount, unixtime, eventName) {
+function reduceTokenValue(address, amount, unixtime, eventName, transactionHash) {
   // get address struct from local DB
   const addressStruct = localDB.filter(item => String(item.address).toLowerCase() === String(address).toLowerCase())
   const index = localDB.findIndex(item => String(item.address).toLowerCase() === String(address).toLowerCase())
@@ -232,7 +243,7 @@ function reduceTokenValue(address, amount, unixtime, eventName) {
   localDB[index] = {
     address,
     data:[...prevData[0], {
-      amount:latestValue, unixtime, eventName
+      amount:latestValue, unixtime, eventName, action: "Reduce", transactionHash
     }],
     latestValue
   }
@@ -241,7 +252,7 @@ function reduceTokenValue(address, amount, unixtime, eventName) {
 
 
 // sub withdrawed % from each token in DB
-async function subWithdraw(cutShare, removedShare, unixtime){
+async function subWithdraw(cutShare, removedShare, unixtime, transactionHash){
   // calculate TOTAL_SHARES
   const TOTAL_SHARES = new BigNumber(cutShare).plus(removedShare)
 
@@ -263,7 +274,7 @@ async function subWithdraw(cutShare, removedShare, unixtime){
     localDB[index] = {
       address,
       data:[...prevData, {
-        amount:withdrawed, unixtime, eventName:'Withdraw'
+        amount:withdrawed, unixtime, eventName:'Withdraw', action: "Reduce", transactionHash
       }],
       latestValue:withdrawed
     }

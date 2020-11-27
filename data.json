@@ -5,72 +5,100 @@
       {
         "amount": 0,
         "unixtime": 1532858081,
-        "eventName": "SmartFundCreated"
+        "eventName": "SmartFundCreated",
+        "action": "Init",
+        "transactionHash": "0x858a1f02ab6a38579f419105ee92b9d06e9403a023ff0279fd38601aa33f0de1"
       },
       {
         "amount": "100000000000000000",
         "unixtime": 1532859811,
-        "eventName": "Deposit"
+        "eventName": "Deposit",
+        "action": "Increase",
+        "transactionHash": "0x51fce783e6b0687ad42bb124c83d4480628b24be516e52563bcc962847ad2abd"
       },
       {
         "amount": "0",
         "unixtime": 1532898999,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Reduce",
+        "transactionHash": "0x1bf849289e8fcc64919eea27d4fc925be9908ee4dc32f58b40e5298384afa714"
       },
       {
         "amount": "40000000000000000",
         "unixtime": 1533563807,
-        "eventName": "Deposit"
+        "eventName": "Deposit",
+        "action": "Increase",
+        "transactionHash": "0xdc6c9b624cf3854ee42ad5cd157ca8d79d1bb60e2a0dbdf27c0d73c762d4511c"
       },
       {
         "amount": "65000000000000000",
         "unixtime": 1535085604,
-        "eventName": "Deposit"
+        "eventName": "Deposit",
+        "action": "Increase",
+        "transactionHash": "0x4571b99dca65df55ed9af1c3ee2402d5ec75b20aed814e2aa19a741eb64ddfff"
       },
       {
         "amount": "165000000000000000",
         "unixtime": 1537052388,
-        "eventName": "Deposit"
+        "eventName": "Deposit",
+        "action": "Increase",
+        "transactionHash": "0x93e1b81ca828b8add66b524e3b1ccdf905c99eea881f304c1b6afcd4b8d0f36f"
       },
       {
         "amount": "166177955787750442",
         "unixtime": 1538922267,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Increase",
+        "transactionHash": "0x3dc17a1c5bee52315841d07efdcff3dfd3b882329e2b4f23e64e675b6f6ff8c0"
       },
       {
         "amount": "66177955787750442",
         "unixtime": 1543362594,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Reduce",
+        "transactionHash": "0x3e6d2f33570d049de9651a2fb93440e47146585b2b8547bdf7a254326a7f0595"
       },
       {
         "amount": "16177955787750442",
         "unixtime": 1546785014,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Reduce",
+        "transactionHash": "0x122f985e1f54eae8dd1378c0ec6bb9ebe4da6e0f4fba2df54ba89a2cf104dabf"
       },
       {
         "amount": "17177955787750442",
         "unixtime": 1559628269,
-        "eventName": "Deposit"
+        "eventName": "Deposit",
+        "action": "Increase",
+        "transactionHash": "0xcd99482f873a9c2b1fecf4e35cec6bfda73979f3299c26aa59e90d080bb84d97"
       },
       {
         "amount": "17095607482897278.33958146522223689727",
         "unixtime": 1559628524,
-        "eventName": "Withdraw"
+        "eventName": "Withdraw",
+        "action": "Reduce",
+        "transactionHash": "0x8027b0715f560b02e43c7b7b04c439ba1be9f5d2d0c6e7aae5fc42bcfed137a9"
       },
       {
         "amount": "18095607482897278.33958146522223689727",
         "unixtime": 1559643662,
-        "eventName": "Deposit"
+        "eventName": "Deposit",
+        "action": "Increase",
+        "transactionHash": "0x4e849525b6abbed0217da473f557f9127628aa2aae4ac8b5373030cba20bdaf8"
       },
       {
         "amount": "18009554775392100.16446166720663172586",
         "unixtime": 1559643816,
-        "eventName": "Withdraw"
+        "eventName": "Withdraw",
+        "action": "Reduce",
+        "transactionHash": "0xccd0233cba6952ec3954fa47aeb52d6fcdcb14b6d240d0b5f4cc5945b3ee5c9c"
       },
       {
         "amount": "68009554775392100.16446166720663172586",
         "unixtime": 1577620427,
-        "eventName": "Deposit"
+        "eventName": "Deposit",
+        "action": "Increase",
+        "transactionHash": "0x7a2f225f5666b43b36655b865b664fc2ee7b2e128472200b4cd619a8c8a717b9"
       }
     ],
     "latestValue": "68009554775392100.16446166720663172586"
@@ -81,52 +109,72 @@
       {
         "amount": "1707996938679934720000",
         "unixtime": 1532898999,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Init",
+        "transactionHash": "0x1bf849289e8fcc64919eea27d4fc925be9908ee4dc32f58b40e5298384afa714"
       },
       {
         "amount": "1280997704009951020000",
         "unixtime": 1533234009,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Reduce",
+        "transactionHash": "0x1afd8dedae56f4cd627c1f4ac52563832e1c8efb9467910346c33adbceb4be91"
       },
       {
         "amount": "853998469339967320000",
         "unixtime": 1533239095,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Reduce",
+        "transactionHash": "0x9ed3d5fb986cad173a8e4b191a90d6ac2f1ee987dcca6f30d3b64067ff1d5050"
       },
       {
         "amount": "753998469339967320000",
         "unixtime": 1533242784,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Reduce",
+        "transactionHash": "0x62725fc81eaea2bea0c4cdbb88fc70b299cb740f0db8896ec17dce65f73ea13c"
       },
       {
         "amount": "653998469339967320000",
         "unixtime": 1533242784,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Reduce",
+        "transactionHash": "0xa7d592f5360556747f80c91721b4b7ac75033af22cf01e77d4180a361e2253fd"
       },
       {
         "amount": "333749043337479580000",
         "unixtime": 1533242784,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Reduce",
+        "transactionHash": "0xf9a0296dc8d153761dcef4cccc0b963b15b802cc8644d015d23b4660022e07c6"
       },
       {
         "amount": "83749043337479580000",
         "unixtime": 1533242784,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Reduce",
+        "transactionHash": "0xd569e7d6cd4a63662b62a40ec3f19b6d9732735ff5492e52bf4f24433ae7eb66"
       },
       {
         "amount": "62811782503109684000",
         "unixtime": 1538922267,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Reduce",
+        "transactionHash": "0x3dc17a1c5bee52315841d07efdcff3dfd3b882329e2b4f23e64e675b6f6ff8c0"
       },
       {
         "amount": "62510673111640348374.14571745585146229139",
         "unixtime": 1559628524,
-        "eventName": "Withdraw"
+        "eventName": "Withdraw",
+        "action": "Reduce",
+        "transactionHash": "0x8027b0715f560b02e43c7b7b04c439ba1be9f5d2d0c6e7aae5fc42bcfed137a9"
       },
       {
         "amount": "62213406900803721075.55664751117665970618",
         "unixtime": 1559643816,
-        "eventName": "Withdraw"
+        "eventName": "Withdraw",
+        "action": "Reduce",
+        "transactionHash": "0xccd0233cba6952ec3954fa47aeb52d6fcdcb14b6d240d0b5f4cc5945b3ee5c9c"
       }
     ],
     "latestValue": "62213406900803721075.55664751117665970618"
@@ -137,17 +185,23 @@
       {
         "amount": "844872758",
         "unixtime": 1533234009,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Init",
+        "transactionHash": "0x1afd8dedae56f4cd627c1f4ac52563832e1c8efb9467910346c33adbceb4be91"
       },
       {
         "amount": "840822576.45933436966370026931",
         "unixtime": 1559628524,
-        "eventName": "Withdraw"
+        "eventName": "Withdraw",
+        "action": "Reduce",
+        "transactionHash": "0x8027b0715f560b02e43c7b7b04c439ba1be9f5d2d0c6e7aae5fc42bcfed137a9"
       },
       {
         "amount": "836824089.01954046219480605419",
         "unixtime": 1559643816,
-        "eventName": "Withdraw"
+        "eventName": "Withdraw",
+        "action": "Reduce",
+        "transactionHash": "0xccd0233cba6952ec3954fa47aeb52d6fcdcb14b6d240d0b5f4cc5945b3ee5c9c"
       }
     ],
     "latestValue": "836824089.01954046219480605419"
@@ -158,22 +212,30 @@
       {
         "amount": "147461118108848",
         "unixtime": 1533239095,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Init",
+        "transactionHash": "0x9ed3d5fb986cad173a8e4b191a90d6ac2f1ee987dcca6f30d3b64067ff1d5050"
       },
       {
         "amount": "234868449094580",
         "unixtime": 1533242784,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Increase",
+        "transactionHash": "0xd569e7d6cd4a63662b62a40ec3f19b6d9732735ff5492e52bf4f24433ae7eb66"
       },
       {
         "amount": "233742528240817.97919306303226254978",
         "unixtime": 1559628524,
-        "eventName": "Withdraw"
+        "eventName": "Withdraw",
+        "action": "Reduce",
+        "transactionHash": "0x8027b0715f560b02e43c7b7b04c439ba1be9f5d2d0c6e7aae5fc42bcfed137a9"
       },
       {
         "amount": "232630977969115.93803324567688027233",
         "unixtime": 1559643816,
-        "eventName": "Withdraw"
+        "eventName": "Withdraw",
+        "action": "Reduce",
+        "transactionHash": "0xccd0233cba6952ec3954fa47aeb52d6fcdcb14b6d240d0b5f4cc5945b3ee5c9c"
       }
     ],
     "latestValue": "232630977969115.93803324567688027233"
@@ -184,22 +246,30 @@
       {
         "amount": "6442823049795035154",
         "unixtime": 1533242784,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Init",
+        "transactionHash": "0x62725fc81eaea2bea0c4cdbb88fc70b299cb740f0db8896ec17dce65f73ea13c"
       },
       {
         "amount": "27075926885119609241",
         "unixtime": 1533242784,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Increase",
+        "transactionHash": "0xf9a0296dc8d153761dcef4cccc0b963b15b802cc8644d015d23b4660022e07c6"
       },
       {
         "amount": "26946129328945447805.48821528175780947564",
         "unixtime": 1559628524,
-        "eventName": "Withdraw"
+        "eventName": "Withdraw",
+        "action": "Reduce",
+        "transactionHash": "0x8027b0715f560b02e43c7b7b04c439ba1be9f5d2d0c6e7aae5fc42bcfed137a9"
       },
       {
         "amount": "26817988431341871700.90270447424111180294",
         "unixtime": 1559643816,
-        "eventName": "Withdraw"
+        "eventName": "Withdraw",
+        "action": "Reduce",
+        "transactionHash": "0xccd0233cba6952ec3954fa47aeb52d6fcdcb14b6d240d0b5f4cc5945b3ee5c9c"
       }
     ],
     "latestValue": "26817988431341871700.90270447424111180294"
@@ -210,17 +280,23 @@
       {
         "amount": "19358739765510062543",
         "unixtime": 1533242784,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Init",
+        "transactionHash": "0xa7d592f5360556747f80c91721b4b7ac75033af22cf01e77d4180a361e2253fd"
       },
       {
         "amount": "19265937139663273731.68841609771410729456",
         "unixtime": 1559628524,
-        "eventName": "Withdraw"
+        "eventName": "Withdraw",
+        "action": "Reduce",
+        "transactionHash": "0x8027b0715f560b02e43c7b7b04c439ba1be9f5d2d0c6e7aae5fc42bcfed137a9"
       },
       {
         "amount": "19174318991167318985.09862513819771903384",
         "unixtime": 1559643816,
-        "eventName": "Withdraw"
+        "eventName": "Withdraw",
+        "action": "Reduce",
+        "transactionHash": "0xccd0233cba6952ec3954fa47aeb52d6fcdcb14b6d240d0b5f4cc5945b3ee5c9c"
       }
     ],
     "latestValue": "19174318991167318985.09862513819771903384"
@@ -231,22 +307,30 @@
       {
         "amount": "10822874999999999996",
         "unixtime": 1543362594,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Init",
+        "transactionHash": "0x3e6d2f33570d049de9651a2fb93440e47146585b2b8547bdf7a254326a7f0595"
       },
       {
         "amount": "18496143749999999996",
         "unixtime": 1546785014,
-        "eventName": "Trade"
+        "eventName": "Trade",
+        "action": "Increase",
+        "transactionHash": "0x122f985e1f54eae8dd1378c0ec6bb9ebe4da6e0f4fba2df54ba89a2cf104dabf"
       },
       {
         "amount": "18407476268085820477.18497870202898697203",
         "unixtime": 1559628524,
-        "eventName": "Withdraw"
+        "eventName": "Withdraw",
+        "action": "Reduce",
+        "transactionHash": "0x8027b0715f560b02e43c7b7b04c439ba1be9f5d2d0c6e7aae5fc42bcfed137a9"
       },
       {
         "amount": "18319940485012320570.46544862742497503742",
         "unixtime": 1559643816,
-        "eventName": "Withdraw"
+        "eventName": "Withdraw",
+        "action": "Reduce",
+        "transactionHash": "0xccd0233cba6952ec3954fa47aeb52d6fcdcb14b6d240d0b5f4cc5945b3ee5c9c"
       }
     ],
     "latestValue": "18319940485012320570.46544862742497503742"
