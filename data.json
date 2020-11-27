@@ -53,17 +53,27 @@
         "eventName": "Deposit"
       },
       {
-        "amount": "18177955787750442",
+        "amount": "17095607482897278.33958146522223689727",
+        "unixtime": 1559628524,
+        "eventName": "Withdraw"
+      },
+      {
+        "amount": "18095607482897278.33958146522223689727",
         "unixtime": 1559643662,
         "eventName": "Deposit"
       },
       {
-        "amount": "68177955787750442",
+        "amount": "18009554775392100.16446166720663172586",
+        "unixtime": 1559643816,
+        "eventName": "Withdraw"
+      },
+      {
+        "amount": "68009554775392100.16446166720663172586",
         "unixtime": 1577620427,
         "eventName": "Deposit"
       }
     ],
-    "latestValue": "68177955787750442"
+    "latestValue": "68009554775392100.16446166720663172586"
   },
   {
     "address": "0xFA1a856Cfa3409CFa145Fa4e20Eb270dF3EB21ab",
@@ -107,9 +117,19 @@
         "amount": "62811782503109684000",
         "unixtime": 1538922267,
         "eventName": "Trade"
+      },
+      {
+        "amount": "62510673111640348374.14571745585146229139",
+        "unixtime": 1559628524,
+        "eventName": "Withdraw"
+      },
+      {
+        "amount": "62213406900803721075.55664751117665970618",
+        "unixtime": 1559643816,
+        "eventName": "Withdraw"
       }
     ],
-    "latestValue": "62811782503109684000"
+    "latestValue": "62213406900803721075.55664751117665970618"
   },
   {
     "address": "0xf0Ee6b27b759C9893Ce4f094b49ad28fd15A23e4",
@@ -118,9 +138,19 @@
         "amount": "844872758",
         "unixtime": 1533234009,
         "eventName": "Trade"
+      },
+      {
+        "amount": "840822576.45933436966370026931",
+        "unixtime": 1559628524,
+        "eventName": "Withdraw"
+      },
+      {
+        "amount": "836824089.01954046219480605419",
+        "unixtime": 1559643816,
+        "eventName": "Withdraw"
       }
     ],
-    "latestValue": "844872758"
+    "latestValue": "836824089.01954046219480605419"
   },
   {
     "address": "0x05f4a42e251f2d52b8ed15E9FEdAacFcEF1FAD27",
@@ -134,9 +164,19 @@
         "amount": "234868449094580",
         "unixtime": 1533242784,
         "eventName": "Trade"
+      },
+      {
+        "amount": "233742528240817.97919306303226254978",
+        "unixtime": 1559628524,
+        "eventName": "Withdraw"
+      },
+      {
+        "amount": "232630977969115.93803324567688027233",
+        "unixtime": 1559643816,
+        "eventName": "Withdraw"
       }
     ],
-    "latestValue": "234868449094580"
+    "latestValue": "232630977969115.93803324567688027233"
   },
   {
     "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
@@ -150,9 +190,19 @@
         "amount": "27075926885119609241",
         "unixtime": 1533242784,
         "eventName": "Trade"
+      },
+      {
+        "amount": "26946129328945447805.48821528175780947564",
+        "unixtime": 1559628524,
+        "eventName": "Withdraw"
+      },
+      {
+        "amount": "26817988431341871700.90270447424111180294",
+        "unixtime": 1559643816,
+        "eventName": "Withdraw"
       }
     ],
-    "latestValue": "27075926885119609241"
+    "latestValue": "26817988431341871700.90270447424111180294"
   },
   {
     "address": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
@@ -161,9 +211,19 @@
         "amount": "19358739765510062543",
         "unixtime": 1533242784,
         "eventName": "Trade"
+      },
+      {
+        "amount": "19265937139663273731.68841609771410729456",
+        "unixtime": 1559628524,
+        "eventName": "Withdraw"
+      },
+      {
+        "amount": "19174318991167318985.09862513819771903384",
+        "unixtime": 1559643816,
+        "eventName": "Withdraw"
       }
     ],
-    "latestValue": "19358739765510062543"
+    "latestValue": "19174318991167318985.09862513819771903384"
   },
   {
     "address": "0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359",
@@ -177,8 +237,18 @@
         "amount": "18496143749999999996",
         "unixtime": 1546785014,
         "eventName": "Trade"
+      },
+      {
+        "amount": "18407476268085820477.18497870202898697203",
+        "unixtime": 1559628524,
+        "eventName": "Withdraw"
+      },
+      {
+        "amount": "18319940485012320570.46544862742497503742",
+        "unixtime": 1559643816,
+        "eventName": "Withdraw"
       }
     ],
-    "latestValue": "18496143749999999996"
+    "latestValue": "18319940485012320570.46544862742497503742"
   }
 ]

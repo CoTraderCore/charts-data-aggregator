@@ -63,7 +63,8 @@ async function runEvensChecker(address, abi){
     //    total share ${eventsObj[i].returnValues[2]}`
     // )
 
-    // subWithdraw(eventsObj[i].returnValues[1], eventsObj[i].returnValues[2])
+    unixTime = await getTimeByBlock(eventsObj[i].blockNumber, web3)
+    subWithdraw(eventsObj[i].returnValues[1], eventsObj[i].returnValues[2], unixTime)
     break
 
     case 'Trade':
@@ -240,21 +241,34 @@ function reduceTokenValue(address, amount, unixtime, eventName) {
 
 
 // sub withdrawed % from each token in DB
-async function subWithdraw(cutShare, removedShare){
-  let TOTAL_SHARES = new BigNumber(cutShare).plus(removedShare)
+async function subWithdraw(cutShare, removedShare, unixtime){
+  // calculate TOTAL_SHARES
+  const TOTAL_SHARES = new BigNumber(cutShare).plus(removedShare)
 
-  localDB.forEach((item) => {
-    let amount = new BigNumber(item.amount)
-    item.amount = BigNumber(amount.minus(amount.multipliedBy(cutShare).dividedBy(TOTAL_SHARES))).toString(10)
-  })
+  // get all token addresses from DB
+  const addresses = localDB.map(item => item.address)
+
+  // update latest balance with withdarwed
+  for(let i = 0; i < addresses.length; i++){
+    // get data for current address
+    const address = addresses[i]
+    const index = localDB.findIndex(item => String(item.address).toLowerCase() === String(address).toLowerCase())
+    const latestValue = new BigNumber(localDB[index].latestValue)
+    const prevData = localDB[index].data
+
+    // calculate withdarwed
+    const withdrawed = BigNumber(latestValue.minus(latestValue.multipliedBy(cutShare).dividedBy(TOTAL_SHARES))).toString(10)
+
+    // update data for current address
+    localDB[index] = {
+      address,
+      data:[...prevData, {
+        amount:withdrawed, unixtime, eventName:'Withdraw'
+      }],
+      latestValue:withdrawed
+    }
+  }
 }
-
-
-// TODO
-function compareBalanceFromContractAndLocalDB(){
-  return
-}
-
 
 
 // test call
